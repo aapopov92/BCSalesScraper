@@ -5,6 +5,7 @@ from bs4 import BeautifulSoup
 
 class Scrapper(object):
     """Scrapper class"""
+
     def __init__(self):
         super(Scrapper, self).__init__()
         self.logger = logging.getLogger(__name__)
@@ -26,13 +27,19 @@ class Scrapper(object):
             name = product.find("span", {"class": "ui-pl-name-title"}).text
             link = product.find("a", {"class": "ui-pl-link"})["href"]
             try:
+                image = product.find("img")['src']
+            except KeyError:
+                image = product.find("img")['data-src']
+            try:
                 price = (
                     product.find("span", {"class": "ui-pl-pricing-low-price"}).text
                     if discount
-                    else product.find("span", {"class": "ui-pl-pricing-high-price"}).text
+                    else product.find(
+                        "span", {"class": "ui-pl-pricing-high-price"}
+                    ).text
                 )
             except AttributeError:
-                price = 'Temporarily Out Of Stock'
+                price = "Temporarily Out Of Stock"
             products.append(
                 {
                     "id": uuid,
@@ -40,10 +47,11 @@ class Scrapper(object):
                     "price": price,
                     "brand": brand,
                     "name": name,
-                    "url": link,
+                    "url": base_url + link,
+                    "image": 'https:' + image.replace('medium', '1200')
                 }
             )
-        next_page = soup.find("li", {"class":"pag-next"})
+        next_page = soup.find("li", {"class": "pag-next"})
         if next_page:
             return products + self.scrape(base_url, next_page.find("a")["href"])
         return products

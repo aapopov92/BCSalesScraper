@@ -4,10 +4,8 @@ from db import DB
 from scrapper import Scrapper
 
 BASE_URL = "https://www.backcountry.com"
-URLS_TO_PARSE = [
-    "/paddle?show=all"
-]
-DATABASE = 'products.db'
+URLS_TO_PARSE = ["/paddle?show=all"]
+DATABASE = "products.db"
 
 
 def init_logger():
@@ -29,8 +27,8 @@ if __name__ == "__main__":
     while True:
         for url in URLS_TO_PARSE:
             logger.info(f"Scraping {url}")
-            products = scrapper.scrape(BASE_URL, url) # Жулик, воруй!
+            products = scrapper.scrape(BASE_URL, url)  # Жулик, воруй!
             logger.info(f"Found {len(products)} products")
+            db.write([tuple(product.values()) for product in products])
             logger.debug(f"{products}")
-        sleep(1800)
-
+        sleep(1600)
