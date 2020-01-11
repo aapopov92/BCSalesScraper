@@ -3,6 +3,7 @@
 ![](https://i.imgur.com/xyEAmi6.png)
 
 <h3 align="center">Requirements:</h3>
+
 - Python 3.6+
 - beautifulsoup4 4.8.2
 - requests==2.22.0
