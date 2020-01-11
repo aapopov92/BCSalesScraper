@@ -18,7 +18,7 @@ class Scrapper(object):
         """
         self.logger = logging.getLogger(__name__)
 
-    def scrape(self, base_url, page):
+    def scrape(self, base_url: str, page: str) -> list:
         """Main method. Scrapes page from backcountry.com and returns list of products
         
         Args:
@@ -29,20 +29,31 @@ class Scrapper(object):
             List: List of products dicts:
             {'id': str, 
             'discount': str, 
-            price': str, 
+            'price': str, 
             'brand': str, 
             'name': str,
             'link': str,
             'image': str
             }
         """
+        if type(base_url) is not str:
+            raise TypeError(f'Expected base_url to be str, got {type(base_url)} instead')
+        if type(page) is not str:
+            raise TypeError(f'Expected page to be str, got {type(page)} instead')
+
         products = list()
         diff = list()
         url = base_url + page
+
         self.logger.debug(f"Scraping {url}")
-        html = requests.get(url).text
+        try:
+            html = requests.get(url).text
+        except Exception as e:
+            self.logger.error(f"Unable to get {base_url + page}: {e}")
+            return
         soup = BeautifulSoup(html, "html.parser")
         products_tags = soup.findAll("div", {"class": "product"})
+
         for product in products_tags:
             uuid = product["data-product-id"]
 
