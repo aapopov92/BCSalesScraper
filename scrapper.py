@@ -32,13 +32,14 @@ class Scrapper(object):
             price': str, 
             'brand': str, 
             'name': str,
-
+            'link': str,
+            'image': str
             }
         """
-        self.logger.debug(f"Scraping {url}")
         products = list()
         diff = list()
         url = base_url + page
+        self.logger.debug(f"Scraping {url}")
         html = requests.get(url).text
         soup = BeautifulSoup(html, "html.parser")
         products_tags = soup.findAll("div", {"class": "product"})
