@@ -35,10 +35,10 @@ class Scrapper(object):
 
             }
         """
-        products = []
-        diff = []
-        url = base_url + page
         self.logger.debug(f"Scraping {url}")
+        products = list()
+        diff = list()
+        url = base_url + page
         html = requests.get(url).text
         soup = BeautifulSoup(html, "html.parser")
         products_tags = soup.findAll("div", {"class": "product"})
