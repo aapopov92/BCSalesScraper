@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 """Main file for parser module. Parses backcountry.com desired category and saves results to local db
 Author(s): Oleksii Popov (aapopov@i.ua)
 
@@ -35,7 +36,7 @@ def init_logger():
 
 
 if __name__ == "__main__":
-    logger: Logger = init_logger()
+    logger= init_logger()
     db = DB(DATABASE)
     scrapper = Scrapper()
     logger.info("Service started")

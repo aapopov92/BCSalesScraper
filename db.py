@@ -7,7 +7,7 @@ from sqlite3 import Error
 
 
 class DB:
-    """Summary
+    """Databse class
     
     Attributes:
         conn (sqlite3.Connection): DB connection object
@@ -21,7 +21,7 @@ class DB:
         Args:
             db_file (str): Path to DB file
         """
-        self.logger: Logger = logging.getLogger(__name__)
+        self.logger= logging.getLogger(__name__)
         self.db_file: str = db_file
         self.initialize()
 
