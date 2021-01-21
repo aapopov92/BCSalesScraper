@@ -19,12 +19,6 @@
 6. `pip install -r requirements.txt`
 7. `./main.py`
 
-<h3 align="center">No, on Windows!</h3>
-
-1. Get Linux, lol :)
-
-TODO: Proper instruction
-
 ------------
 
 <h3 align="center">What it does?</h3>
