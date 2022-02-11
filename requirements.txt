@@ -7,7 +7,7 @@ Click==7.0
 configparser==4.0.2
 idna==2.8
 pathspec==0.7.0
-protobuf==3.11.2
+protobuf==3.15.0
 regex==2020.1.7
 requests==2.22.0
 six==1.13.0
