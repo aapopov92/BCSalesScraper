@@ -9,9 +9,9 @@ idna==2.8
 pathspec==0.7.0
 protobuf==3.15.0
 regex==2020.1.7
-requests==2.22.0
+requests
 six==1.13.0
 soupsieve==1.9.5
 toml==0.10.0
 typed-ast==1.4.0
-urllib3==1.26.5
+urllib3
