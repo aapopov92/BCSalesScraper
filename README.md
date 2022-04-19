@@ -6,7 +6,7 @@
 
 - Python 3.6+
 - beautifulsoup4 4.8.2
-- requests==2.22.0
+- requests
 
 ------------
 <h3 align="center">How to run it on Mac/Linux?</h3>
